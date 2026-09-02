@@ -1,0 +1,17 @@
+# .github/labeler.yml
+
+frontend:
+  - resources/**/*
+  - vendors/**/*
+  - index.html
+
+assets:
+  - img/**/*
+  - resources/img/**/*
+  - resources/favicons/**/*
+
+docs:
+  - '*.md'
+
+tests:
+  - test/**/*
