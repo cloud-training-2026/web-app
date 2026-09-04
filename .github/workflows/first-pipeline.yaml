@@ -6,15 +6,12 @@ on:
       - main
 
 jobs:
-  show-config:
-    runs-on: ubuntu-latest
-    env:
-      DB_PASS: ${{ secrets.DB_PASSWORD}}
-      SRV_NAME: ${{ vars.SERVER_NAME}}
+  deploy:
+    runs-on: [self-hosted,linux, x64]  #or use your custom label
     steps:
-      - name: show server name(variable -- visible in logs)
-        run: echo "Deploying to server" "$SRV_NAME"
-
-      - name: use password (secretn-- masked in log)
-        run: echo "connecting with password:" "$DB_PASS"
-
+      - name: verify I am on the private runner
+        run:
+          hostname
+          hostnamectl
+          echo "This is running on My server, not on github infrastructure"
+   
