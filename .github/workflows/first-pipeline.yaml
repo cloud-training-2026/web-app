@@ -6,23 +6,15 @@ on:
       - main
 
 jobs:
-  build:
+  show-config:
     runs-on: ubuntu-latest
+    env:
+      DB_PASS: ${{ secrets.DB_PASSWORD}}
+      SRV_NAME: ${{ vars.SERVER_NAME}}
     steps:
-      - run: |
-          echo "Build step running"
-          sleep 5
+      - name: show server name(variable -- visible in logs)
+        run: echo "Deploying to server" "$SRV_NAME"
 
-  test:
-    needs: build    #waits for build to finish
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "Test step running"
-          sleep 5
+      - name: use password (secretn-- masked in log)
+        run: echo "connecting with password:" "$DB_PASS"
 
-  deploy:
-    needs: test #waits for test to finish
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deploy step running -- all tests passed!"
