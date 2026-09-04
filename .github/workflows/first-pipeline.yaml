@@ -1,0 +1,23 @@
+name: My first pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  say-hello:
+    name: Hello World Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a message
+        run: echo "Hello World! The Pipeline is working!"
+
+      - name: Show the runner details
+        run: |
+         echo "Runner OS: $RUNNER_OS"
+         echo "Hostname: $(histname)"
+         hostname -i
+
+      - name: Show current date and time
+        run: date

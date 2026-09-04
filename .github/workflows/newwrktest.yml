@@ -1,0 +1,38 @@
+#Section 1: Name
+# The display name shown in the Github Actions tab
+name: Amarachi Automation workflow
+
+#Section 2: Trigger (on)
+#When should this pipeline run?
+on:
+  push:
+   branches:
+    - main # run when someone pushes to main
+  pull_request:
+   branches:
+    - main 
+
+# OTHER TRIGGER OPTIONS:
+# schedule: # run on a schedule
+# - cron: "0 9 * * 1-5" # 9am every Monday to Friday
+# workflow_dispatch: # run manually (button in GitHub UI)
+# release: # run when a new release is created
+
+# SECTION 3: JOBS
+# What should the pipeline actually do?
+
+jobs:
+  first_job:
+   name: My first job
+   runs-on: ubuntu-latest    #which runner to use
+   steps:
+    - name: Say Hello
+      run: echo "Hello World"
+    - name: Show hostname
+      run: hostname
+
+# SECTION 4: STEPS (inside a job)
+# Each step is one command or action
+# name: gives the step a label (shown in the pipeline log)
+# run: executes a shell command
+# uses: uses a pre-built action from the Marketplace
