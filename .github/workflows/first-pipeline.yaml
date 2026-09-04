@@ -16,7 +16,7 @@ jobs:
       - name: Show the runner details
         run: |
          echo "Runner OS: $RUNNER_OS"
-         echo "Hostname: $(histname)"
+         echo "Hostname: $(hostname)"
          hostname -i
 
       - name: Show current date and time
